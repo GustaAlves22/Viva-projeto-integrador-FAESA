@@ -281,17 +281,34 @@ showCuriosity(curiosityIndex);
    ========================================================= */
 
 const heroFacts = [
-
-    "Pequenas mudanças de hábitos podem contribuir para uma rotina mais saudável.",
-
-    "A saúde envolve aspectos físicos, mentais e sociais.",
-
-    "A prevenção é uma importante ferramenta para a promoção da saúde.",
-
-    "Buscar informações confiáveis ajuda na tomada de decisões mais conscientes.",
-
-    "O sono possui papel importante na recuperação e no funcionamento do organismo."
-
+    {
+        title: "Por que os médicos usam verde ou azul nas cirurgias?",
+        text: "Essas cores ajudam a reduzir o efeito visual causado por olhar por muito tempo para tons avermelhados, como os do sangue, e facilitam a percepção de contrastes durante procedimentos longos."
+    },
+    {
+        title: "Por que devemos lavar as mãos por cerca de 20 segundos?",
+        text: "Esfregar todas as partes das mãos com água e sabão ajuda a remover sujeira e microrganismos que podem transmitir doenças. Lavar rapidamente pode não ser tão eficaz."
+    },
+    {
+        title: "Álcool em gel não substitui a lavagem das mãos em todas as situações",
+        text: "Preparações com pelo menos 60% de álcool são úteis quando água e sabão não estão disponíveis. Porém, quando as mãos estão visivelmente sujas ou engorduradas, é melhor lavá-las com água e sabão."
+    },
+    {
+        title: "O protetor solar é importante mesmo em dias nublados",
+        text: "Parte da radiação ultravioleta atravessa as nuvens. Por isso, proteger a pele continua sendo importante quando o céu está encoberto."
+    },
+    {
+        title: "Passar um tempo em ambientes naturais pode favorecer o bem-estar",
+        text: "Caminhar em um parque ou ter contato com áreas verdes pode ajudar a relaxar e aliviar o estresse. Os benefícios variam conforme a pessoa e o contexto."
+    },
+    {
+        title: "A música pode ajudar a aliviar a ansiedade em algumas situações",
+        text: "Ouvir músicas agradáveis pode promover relaxamento e ajudar algumas pessoas a lidar com o estresse. Ela pode complementar os cuidados de saúde, mas não substitui um tratamento quando necessário."
+    },
+    {
+        title: "A luz da manhã pode ajudar a regular o sono",
+        text: "A exposição à luz natural durante o dia ajuda a sincronizar o relógio biológico, que participa da regulação dos horários de sono e vigília."
+    }
 ];
 
 
@@ -299,6 +316,9 @@ let heroFactIndex = 0;
 
 const heroFact =
     document.getElementById("heroFact");
+
+const heroFactTitle =
+    document.getElementById("heroFactTitle");
 
 const newHeroFact =
     document.getElementById("newHeroFact");
@@ -312,8 +332,11 @@ newHeroFact.addEventListener("click", () => {
         heroFactIndex = 0;
     }
 
+    heroFactTitle.textContent =
+        heroFacts[heroFactIndex].title;
+
     heroFact.textContent =
-        heroFacts[heroFactIndex];
+        heroFacts[heroFactIndex].text;
 
 });
 
@@ -996,7 +1019,7 @@ loadQuestion();
    ========================================================= */
 
 const sections =
-    document.querySelectorAll("main section[id]");
+    document.querySelectorAll("main section[id], main #mitos-verdades");
 
 const navigationLinks =
     document.querySelectorAll(".nav-link");

@@ -253,6 +253,52 @@ button {
 }
 
 
+@media (min-width: 1001px) {
+
+    .header {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 250px;
+        height: 100vh;
+        border-right: 1px solid var(--border);
+        border-bottom: 0;
+    }
+
+    .header-content {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 26px 16px;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 28px;
+    }
+
+    .nav {
+        flex: 1;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        overflow-y: auto;
+    }
+
+    .nav-link {
+        padding: 11px 13px;
+    }
+
+    .header-actions {
+        margin-top: auto;
+        justify-content: flex-start;
+    }
+
+    main,
+    footer {
+        margin-left: 250px;
+    }
+}
+
+
 /* ================= HERO ================= */
 
 .hero {
@@ -466,11 +512,20 @@ button {
 }
 
 
+.hero-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+
 .hero-card p {
 
-    font-size: 1.25rem;
+    color: var(--text-light);
 
-    font-weight: 600;
+    font-size: 0.95rem;
+
+    font-weight: 400;
 
     line-height: 1.5;
 }
@@ -1702,6 +1757,117 @@ button {
 }
 
 
+.quiz-stage {
+    position: relative;
+    min-height: 390px;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+
+.quiz-stage .quiz-card {
+    min-height: 390px;
+    opacity: 0.28;
+    filter: blur(2px);
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.quiz-lock-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: color-mix(in srgb, var(--background) 76%, transparent);
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+
+.quiz-lock-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 420px;
+}
+
+
+.quiz-lock-icon {
+    display: block;
+    font-size: 3.5rem;
+    line-height: 1;
+    animation: lock-float 2.4s ease-in-out infinite;
+}
+
+
+.quiz-lock-label {
+    margin-top: 16px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+
+.quiz-lock-content h3 {
+    margin: 7px 0;
+    font-size: 1.7rem;
+}
+
+
+.quiz-lock-content p {
+    color: var(--text-light);
+}
+
+
+.quiz-lock-progress {
+    position: relative;
+    width: 140px;
+    height: 6px;
+    margin-top: 24px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--border);
+}
+
+
+.quiz-lock-progress::after {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 42%;
+    border-radius: inherit;
+    background: var(--primary);
+    content: "";
+    animation: lock-progress 2.2s ease-in-out infinite alternate;
+}
+
+
+@keyframes lock-float {
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+@keyframes lock-progress {
+    to {
+        transform: translateX(138%);
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .quiz-lock-icon,
+    .quiz-lock-progress::after {
+        animation: none;
+    }
+}
+
+
 .quiz-progress {
 
     display: flex;
@@ -2111,6 +2277,39 @@ button {
 
 @media (max-width: 1000px) {
 
+    .header {
+        position: sticky;
+        inset: auto;
+        width: auto;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+
+    .header-content {
+        width: min(1160px, 92%);
+        height: 74px;
+        margin: 0 auto;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+
+    .header-actions {
+        margin-top: 0;
+    }
+
+
+    main,
+    footer {
+        margin-left: 0;
+    }
+
+
     .nav {
 
         position: absolute;
@@ -2299,6 +2498,12 @@ button {
     .quiz-card {
 
         padding: 25px;
+    }
+
+
+    .quiz-stage,
+    .quiz-stage .quiz-card {
+        min-height: 360px;
     }
 
 
